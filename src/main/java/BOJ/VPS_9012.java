@@ -1,0 +1,45 @@
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+
+/**
+ * BOJ 9012 ( https://www.acmicpc.net/problem/9012 )
+ */
+public class VPS_9012 {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int size = Integer.parseInt(br.readLine());
+        while(size >0){
+            size--;
+            vaild(br.readLine());
+        }
+    }
+
+    private static void vaild(String input){
+        Stack<Character> stack = new Stack();
+        char[] chars = input.toCharArray();
+        for(int i=0; i< chars.length; i++){
+            switch (chars[i]){
+                case '(':
+                    stack.add(chars[i]);
+                    break;
+                case ')':
+                    if(stack.size()==0){
+                        System.out.println("NO");
+                        return;
+                    }
+                    stack.pop();
+                    break;
+            }
+        }
+        if(stack.size() == 0)
+            System.out.println("YES");
+        else
+            System.out.println("NO");
+
+    }
+}
